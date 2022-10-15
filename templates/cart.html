@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<h1 align="center">Shopping Cart</h1>
+<div class="box">
+    {% if not logged_in: %}
+  <a href="{{ url_for('login') }}" class="btn btn-primary btn-block btn-large">Login</a>
+  <a href="{{ url_for('register') }}" class="btn btn-secondary btn-block btn-large">Register</a>
+    {% endif %}
+</div>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Description</th>
+    <th>price</th>
+          <th></th>
+  </tr>
+    {% for i in cart %}
+
+  <tr>
+    <td>{{i.prod_id}}</td>
+    <td>{{i.prod}}</td>
+    <td>${{i.price}}</td>
+
+
+
+
+</tr>
+
+
+
+    </td>
+
+  </tr>
+     {% endfor %}
+</table>
+<table>
+<form action="/checkout" method="post">
+<input type = "submit" value = "Checkout" />
+
+    </form>
+</table>
+
+{% endblock %}

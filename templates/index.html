@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<h1>Our Products</h1>
+<div class="box">
+
+<table></table>
+
+
+    {% if not logged_in: %}
+<p>you need to be logged in to add to shopping cart</p>
+    {% endif %}
+</div>
+
+
+
+
+
+
+
+
+ <table>
+  <tr>
+    <th>Product</th>
+    <th>Description</th>
+    <th>price</th>
+          <th>Picture</th>          <th></th>
+  </tr>
+    {% for i in prods %}
+
+  <tr>
+    <td>{{i.prod}}</td>
+    <td>{{i.prod_desc}}</td>
+    <td>${{i.price}}</td>
+      <td><img src="static/products/{{i.picture}}" alt="{{i.prod}}"></td>
+
+    <td>
+{% if  logged_in: %}
+            <form action="/add/{{i.id}}" method="post">
+<input type = "submit" value = "Add" />{% endif %}
+</tr>
+    </form>
+
+
+    </td>
+
+  </tr>
+     {% endfor %}
+</table>
+{% endblock %}
